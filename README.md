@@ -11,7 +11,7 @@ MONGO_URI=<tu_uri_mongodb>
 
 node app.js
 
-El backend correrá en http://localhost:5000.
+El backend correrá en http://localhost:3000.
 
 📂 Rutas de la API
 
