@@ -1,5 +1,6 @@
 const Rol = require("../models/rol");
 const Usuario = require("../models/usuario");
+const reportes = require("../models/reportesAdmin")
 
 
 // Crear rol
@@ -55,7 +56,7 @@ exports.crearUsuario = async (req, res) => {
     const nuevoUsuario = new Usuario({
       nombre,
       correo,
-      contraseña,
+      password: contraseña,
       rol: rolEncontrado._id
     });
 
@@ -89,3 +90,12 @@ exports.eliminarUsuario = async (req, res) => {
   }
 
 };
+exports.verreportes = async (req, res) => {
+  try {
+    const logs = await reportes.find().sort({ fecha: -1 }).limit(20); // últimos 20 registros
+    res.json(logs);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
